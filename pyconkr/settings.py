@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'sorl.thumbnail',
+    'import_export',
+    'django_summernote',
+    'api_2021',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +131,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# django-summernote
+X_FRAME_OPTIONS = "SAMEORIGIN"  # Refused to display 'http://127.0.0.1:8000/' in a frame because it set 'X-Frame-Options' to 'deny'. 이슈 해결
