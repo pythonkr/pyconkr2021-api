@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'import_export',
     'django_summernote',
-    'api_2021',
+    'sponsor',
+    'program',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class Api2021Config(AppConfig):
+class SponsorConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'api_2021'
+    name = 'sponsor'

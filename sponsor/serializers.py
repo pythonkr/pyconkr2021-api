@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from api_2021 import models
+from sponsor import models
 
 
 class SponsorSerializer(serializers.ModelSerializer):

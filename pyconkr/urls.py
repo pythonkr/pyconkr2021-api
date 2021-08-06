@@ -17,17 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 
 
-from rest_framework import routers, serializers, viewsets
+from rest_framework import routers
 
-from api_2021.viewsets import UserViewSet, SponsorViewSet
+from sponsor.viewsets import SponsorViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'sponsors', SponsorViewSet)
+router.register()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]

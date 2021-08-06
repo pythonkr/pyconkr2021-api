@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 
 from rest_framework import viewsets
 
-from api_2021.serializers import UserSerializer, SponsorSerializer
-from api_2021.models import Sponsor
+from sponsor.serializers import UserSerializer, SponsorSerializer
+from sponsor.models import Sponsor
 
 
 class UserViewSet(viewsets.ModelViewSet):
