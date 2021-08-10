@@ -20,10 +20,12 @@ from django.urls import path, include
 from rest_framework import routers
 
 from sponsor.viewsets import SponsorViewSet
+from program.viewsets import ProposalViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'sponsors', SponsorViewSet)
+router.register(r'program', ProposalViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
