@@ -24,7 +24,6 @@ from sponsor.viewsets import SponsorViewSet
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'sponsors', SponsorViewSet)
-router.register()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
