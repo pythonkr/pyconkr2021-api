@@ -5,7 +5,7 @@ EXPOSE 8000
 WORKDIR /app
 COPY . /app
 
-RUN chmod +x d/app/entrypoint.sh
+RUN chmod +x entrypoint.sh
 RUN pip install -r requirements.txt
 
 ENTRYPOINT ["/app/entrypoint.sh"]
