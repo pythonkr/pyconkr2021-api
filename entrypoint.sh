@@ -6,4 +6,4 @@ python manage.py makemigrations
 python manage.py migrate
 
 # RUN
-gunicorn -b 0.0.0.0:8000 pyconkr.asgi:application
+gunicorn -b 0.0.0.0:8000 pyconkr.wsgi:application
