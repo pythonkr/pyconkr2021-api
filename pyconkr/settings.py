@@ -15,6 +15,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import requests
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -28,6 +30,12 @@ SECRET_KEY = 'django-insecure-)$x@507chah=nr9do0a-z04z*5bc$j$a$$vcv7y#rt3bn=7)5b
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# ELB Health check
+if 'ECS_CONTAINER_METADATA_URI_V4' in os.environ:
+    ALLOWED_HOSTS += [ip for network in requests.get(os.environ['ECS_CONTAINER_METADATA_URI_V4']).json()['Networks']
+                      for ip in network['IPv4Addresses']]
+
 
 
 # Application definition
