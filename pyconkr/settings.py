@@ -29,7 +29,10 @@ SECRET_KEY = 'django-insecure-)$x@507chah=nr9do0a-z04z*5bc$j$a$$vcv7y#rt3bn=7)5b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dev-pycon-kr-2021-1145975631.ap-northeast-2.elb.amazonaws.com']
+ALLOWED_HOSTS = [ '127.0.0.1',
+                  'localhost',
+                  'dev-pycon-kr-2021-1145975631.ap-northeast-2.elb.amazonaws.com',
+                ]
 
 # ELB Health check
 if 'ECS_CONTAINER_METADATA_URI_V4' in os.environ:
