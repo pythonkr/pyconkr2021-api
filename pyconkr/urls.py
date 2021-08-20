@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 
 
 from rest_framework import routers
@@ -28,6 +29,7 @@ router.register(r'sponsors', SponsorViewSet)
 router.register(r'program', ProposalViewSet)
 
 urlpatterns = [
+    path('health', lambda request: HttpResponse('good')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
