@@ -165,11 +165,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 X_FRAME_OPTIONS = "SAMEORIGIN"  # Refused to display 'http://127.0.0.1:8000/' in a frame because it set 'X-Frame-Options' to 'deny'. 이슈 해결
 
 # AWS
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = os.getenv('2021_DEV_S3_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('2021_DEV_S3_AWS_SECRET_ACCESS_KEY')
 AWS_S3_REGION_NAME = 'ap-northeast-2'
 
 # S3
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')    # TODO dev, prod 분리
+AWS_STORAGE_BUCKET_NAME = os.getenv('2021_DEV_S3_AWS_STORAGE_BUCKET_NAME')    # TODO dev, prod 분리
