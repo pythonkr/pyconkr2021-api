@@ -22,11 +22,13 @@ from rest_framework import routers
 
 from sponsor.viewsets import SponsorViewSet
 from program.viewsets import ProposalViewSet
+from article.viewsets import ArticleSerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'sponsors', SponsorViewSet)
 router.register(r'program', ProposalViewSet)
+router.register(r'article', ArticleSerializer)
 
 urlpatterns = [
     path('health', lambda request: HttpResponse('good')),
