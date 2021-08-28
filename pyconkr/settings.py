@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # django app
     'sponsor',
     'program',
+    'article',
 ]
 
 MIDDLEWARE = [
