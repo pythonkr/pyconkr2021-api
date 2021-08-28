@@ -8,5 +8,5 @@ from article.serializers import ArticleSerializer
 
 
 class ArticleViewSet(ReadOnlyModelViewSet):
-    queryset = Article.objects.filter(visible_at__lte=datetime.datetime.now()).order_by(Coalesce('created_at').desc())
+    queryset = Article.objects.filter(visible_at__lte=datetime.datetime.now()).order_by('-created_at')
     serializer_class = ArticleSerializer
