@@ -5,5 +5,5 @@ from program.serializers import ProposalSerializer
 
 
 class ProposalViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Proposal.objects.all()
+    queryset = Proposal.objects.all().order_by('track_num')
     serializer_class = ProposalSerializer
