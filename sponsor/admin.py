@@ -34,6 +34,13 @@ class SponsorAdmin(SummernoteModelAdmin, ImportExportModelAdmin):
         else:
             return False
 
+    def get_form(self, request, obj=None, change=False, **kwargs):
+        if not request.user.is_superuser:
+            kwargs['exclude'] = ['slug', 'creator', 'name', 'level', 'manager_name',
+                                 'manager_email', 'manager_id', 'submitted', 'accepted', 'paid_at',]
+
+        return super().get_form(request, obj=None, change=False, **kwargs)
+
 
 admin.site.register(Sponsor, SponsorAdmin)
 

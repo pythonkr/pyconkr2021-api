@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.db import models
+from django import forms
+
 from django_summernote.admin import SummernoteModelAdmin
 from import_export.admin import ImportExportModelAdmin
 
@@ -37,6 +39,14 @@ class ProgramAdmin(SummernoteModelAdmin):
             return True
         else:
             return False
+
+    def get_form(self, request, obj=None, change=False, **kwargs):
+        if not request.user.is_superuser:
+            kwargs['exclude'] = ['user', 'difficulty', 'duration', 'language', 'category',
+                                 'accepted', 'introduction', 'video_url', 'slide_url', 'video_open_at',
+                                 'track_num', 'title']
+
+        return super().get_form(request, obj=None, change=False, **kwargs)
 
 
 admin.site.register(Proposal, ProgramAdmin)
