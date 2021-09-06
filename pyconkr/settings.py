@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'sponsor',
     'program',
     'article',
+    'log',
 ]
 
 MIDDLEWARE = [

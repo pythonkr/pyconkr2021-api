@@ -126,3 +126,4 @@ data/
 *.swp
 /program/migrations
 /sponsor/migrations/
+/log/migrations
