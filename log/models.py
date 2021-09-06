@@ -13,7 +13,7 @@ class Log(models.Model):
                                 ('login_fail', '실패')
                             ),
                             default='')
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
     ip = models.GenericIPAddressField()
     msg = models.CharField(max_length=1000)
     ts = models.DateTimeField(auto_now_add=True)
