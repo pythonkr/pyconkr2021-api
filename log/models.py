@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class Log(models.Model):
+class LoginLog(models.Model):
     type = models.CharField(max_length=20,
                             choices=(
                                 ('', '---------'),
