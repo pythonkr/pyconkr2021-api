@@ -10,7 +10,8 @@ class Log(models.Model):
                                 ('', '---------'),
                                 ('login', '로그인'),
                                 ('logout', '로그아웃'),
-                                ('login_fail', '실패')
+                                ('login_fail', '실패'),
+                                ('abnormal_action', '비정상적인 명령')
                             ),
                             default='')
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
