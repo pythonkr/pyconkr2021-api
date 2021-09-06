@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from log.models import LoginLog
+from log.models import Log
 
 
 class LogAdmin(admin.ModelAdmin):
@@ -9,4 +9,4 @@ class LogAdmin(admin.ModelAdmin):
     ordering = ('-ts',)
 
 
-admin.site.register(LoginLog, LogAdmin)
+admin.site.register(Log, LogAdmin)
