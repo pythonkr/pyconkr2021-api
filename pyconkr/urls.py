@@ -20,13 +20,13 @@ from django.http import HttpResponse
 
 from rest_framework import routers
 
-from sponsor.viewsets import SponsorViewSet
+from sponsor.viewsets import SponsorViewSet, SponsorLevelViewSet
 from program.viewsets import ProposalViewSet
 from article.viewsets import ArticleViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'sponsors', SponsorViewSet)
+router.register(r'sponsors', SponsorLevelViewSet)
 router.register(r'program', ProposalViewSet)
 router.register(r'article', ArticleViewSet)
 

@@ -67,6 +67,7 @@ class Sponsor(models.Model):
                             help_text=_('후원사의 이름입니다. 서비스나 회사 이름이 될 수 있습니다.'))
     level = models.ForeignKey(SponsorLevel, null=True,
                               on_delete=models.SET_NULL, blank=True,
+                              related_name='sponsors',
                               help_text=_('후원을 원하시는 등급을 선택해주십시오. 모두 판매된 등급은 선택할 수 없습니다.'))
     desc = models.TextField(null=True, blank=True,
                             help_text=_('후원사 설명입니다. 이 설명은 홈페이지에 게시됩니다.'))

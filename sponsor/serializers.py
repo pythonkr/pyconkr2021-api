@@ -8,7 +8,15 @@ from sponsor import models
 class SponsorSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Sponsor
-        fields = ['name']
+        fields = ['name', 'desc', 'logo_image']
+
+
+class SponsorLevelSerializer(serializers.ModelSerializer):
+    sponsors = SponsorSerializer(many=True)
+
+    class Meta:
+        model = models.SponsorLevel
+        fields = ['name', 'sponsors']
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
