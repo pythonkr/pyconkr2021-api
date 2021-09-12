@@ -102,3 +102,8 @@ class Sponsor(models.Model):
 
     def get_absolute_url(self):
         return reverse('sponsor', args=[self.pk])
+
+
+class Patron(models.Model):
+    user_name = models.CharField(max_length=50)
+    price = models.IntegerField(default=0)

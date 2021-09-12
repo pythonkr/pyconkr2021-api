@@ -24,3 +24,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['url', 'username', 'email', 'is_staff']
 
+
+class PatronSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Patron
+        fields = '__all__'
