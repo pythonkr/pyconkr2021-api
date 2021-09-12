@@ -17,5 +17,5 @@ class SponsorViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class SponsorLevelViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = SponsorLevel.objects.all()
+    queryset = SponsorLevel.objects.all().order_by('order')
     serializer_class = SponsorLevelSerializer
