@@ -179,6 +179,7 @@ AWS_S3_REGION_NAME = 'ap-northeast-2'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = os.getenv('S3_AWS_STORAGE_BUCKET_NAME')    # TODO dev, prod 분리
+AWS_QUERYSTRING_AUTH = False
 
 # django-cors-headers
 CORS_ALLOW_ALL_ORIGINS = True
