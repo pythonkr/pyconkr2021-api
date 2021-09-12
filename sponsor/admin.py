@@ -56,7 +56,7 @@ admin.site.register(SponsorLevel, SponsorLevelAdmin)
 
 
 class PatronAdmin(admin.ModelAdmin):
-    list_display = '__all__'
+    list_display = ('user_name', 'price', 'desc',)
 
 
 admin.site.register(Patron, PatronAdmin)

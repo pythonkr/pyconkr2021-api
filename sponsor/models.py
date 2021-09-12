@@ -107,3 +107,4 @@ class Sponsor(models.Model):
 class Patron(models.Model):
     user_name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
+    desc = models.TextField(default='후원해주셔서 감사합니다. Thank you for your contribution.')
