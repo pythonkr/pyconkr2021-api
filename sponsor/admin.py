@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django_summernote.admin import SummernoteModelAdmin
 from import_export.admin import ImportExportModelAdmin
-from .models import Sponsor, SponsorLevel
+from .models import Sponsor, SponsorLevel, Patron
 
 from pyconkr.summernote import SummernoteWidgetWithCustomToolbar
 
@@ -53,3 +53,10 @@ class SponsorLevelAdmin(SummernoteModelAdmin):
 
 
 admin.site.register(SponsorLevel, SponsorLevelAdmin)
+
+
+class PatronAdmin(admin.ModelAdmin):
+    list_display = '__all__'
+
+
+admin.site.register(Patron, PatronAdmin)
