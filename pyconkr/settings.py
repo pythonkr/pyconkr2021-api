@@ -15,6 +15,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import requests
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -27,7 +29,20 @@ SECRET_KEY = 'django-insecure-)$x@507chah=nr9do0a-z04z*5bc$j$a$$vcv7y#rt3bn=7)5b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'localhost',
+                 'dev-pycon-kr-2021-1145975631.ap-northeast-2.elb.amazonaws.com',
+                 'dev.2021.api.pycon.kr',
+                ]
+
+# ELB Health check
+if 'ECS_CONTAINER_METADATA_URI_V4' in os.environ:
+    ALLOWED_HOSTS += [ip for network in requests.get(os.environ['ECS_CONTAINER_METADATA_URI_V4']).json()['Networks']
+                      for ip in network['IPv4Addresses']]
+
+if 'ECS_CONTAINER_METADATA_URI' in os.environ:
+    ALLOWED_HOSTS += [ip for network in requests.get(os.environ['ECS_CONTAINER_METADATA_URI']).json()['Networks']
+                      for ip in network['IPv4Addresses']]
 
 
 # Application definition
@@ -43,13 +58,22 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'import_export',
     'django_summernote',
+    'storages',
+
+    # CORS
+    'corsheaders',
+
+    # django app
     'sponsor',
     'program',
+    'article',
+    'log',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,9 +145,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -145,3 +169,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-summernote
 X_FRAME_OPTIONS = "SAMEORIGIN"  # Refused to display 'http://127.0.0.1:8000/' in a frame because it set 'X-Frame-Options' to 'deny'. 이슈 해결
+
+# AWS
+AWS_ACCESS_KEY_ID = os.getenv('S3_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('S3_AWS_SECRET_ACCESS_KEY')
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+
+# S3
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = os.getenv('S3_AWS_STORAGE_BUCKET_NAME')    # TODO dev, prod 분리
+AWS_QUERYSTRING_AUTH = False
+
+# django-cors-headers
+CORS_ALLOW_ALL_ORIGINS = True

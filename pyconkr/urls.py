@@ -15,21 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 
 
 from rest_framework import routers
 
-from sponsor.viewsets import SponsorViewSet
+from sponsor.viewsets import SponsorViewSet, SponsorLevelViewSet, PatronViewSet
 from program.viewsets import ProposalViewSet
+from article.viewsets import ArticleViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'sponsors', SponsorViewSet)
+router.register(r'sponsors', SponsorLevelViewSet)
 router.register(r'program', ProposalViewSet)
+router.register(r'article', ArticleViewSet)
+router.register(r'patron', PatronViewSet)
 
 urlpatterns = [
+    path('health', lambda request: HttpResponse('good')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/', include(router.urls)),
+    path('api/v1/', include(router.urls)),
 ]
