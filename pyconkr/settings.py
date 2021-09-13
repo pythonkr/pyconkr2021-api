@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
                  'dev-pycon-kr-2021-1145975631.ap-northeast-2.elb.amazonaws.com',
                  'dev.2021.api.pycon.kr',
+                 '2021.api.pycon.kr',
                 ]
 
 # ELB Health check
@@ -44,6 +45,7 @@ if 'ECS_CONTAINER_METADATA_URI' in os.environ:
     ALLOWED_HOSTS += [ip for network in requests.get(os.environ['ECS_CONTAINER_METADATA_URI']).json()['Networks']
                       for ip in network['IPv4Addresses']]
 
+print('ALLOWED_HOST: ', ALLOWED_HOSTS)
 
 # Application definition
 
