@@ -6,4 +6,7 @@ from program.models import Proposal
 class ProposalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Proposal
-        fields = ['title']
+        fields = ['title', 'brief', 'desc', 'comment', 'difficulty',
+                  'duration', 'language', 'category', 'introduction', 'video_url',
+                  'slide_url'
+                  ]
