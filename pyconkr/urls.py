@@ -24,10 +24,12 @@ from sponsor.viewsets import SponsorViewSet, SponsorLevelViewSet, PatronViewSet
 from program.viewsets import ProposalViewSet
 from article.viewsets import ArticleViewSet
 
+from program.views import SessionListApi
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'sponsors', SponsorLevelViewSet)
-router.register(r'program', ProposalViewSet)
+# router.register(r'program', ProposalViewSet)
 router.register(r'article', ArticleViewSet)
 router.register(r'patron', PatronViewSet)
 
@@ -36,5 +38,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    # API
+    path('api/v1/program', SessionListApi.as_view()),
+
+    # DRF Router
     path('api/v1/', include(router.urls)),
 ]
