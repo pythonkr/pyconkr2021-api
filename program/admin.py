@@ -18,6 +18,10 @@ admin.site.register(ProgramCategory, ProgramCategoryAdmin)
 
 
 class ProgramAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'difficulty', 'duration', 'language', 'category', 'video_open_at', 'track_num',)
+    ordering = ('video_open_at', 'track_num',)
+    search_fields = ('title',)
+
     formfield_overrides = {models.TextField: {
         'widget': SummernoteWidgetWithCustomToolbar}
     }
