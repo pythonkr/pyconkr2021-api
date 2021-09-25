@@ -40,7 +40,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # API
-    path('api/v1/program', SessionListApi.as_view()),
+    path('api/v1/program/', SessionListApi.as_view()),
 
     # DRF Router
     path('api/v1/', include(router.urls)),
