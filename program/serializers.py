@@ -4,7 +4,7 @@ from program.models import Proposal, ProgramCategory
 
 
 class ProposalSerializer(serializers.ModelSerializer):
-    video_open_at = serializers.DateTimeField(format='%Y/%m/%d %X')
+    video_open_at = serializers.DateTimeField(format='%Y/%m/%d %H:%M')
     difficulty = serializers.ChoiceField(choices=(
                                       ('B', 'Beginner'),
                                       ('I', 'Intermediate'),
