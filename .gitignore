@@ -124,6 +124,3 @@ data/
 
 # vim
 *.swp
-/program/migrations
-/sponsor/migrations/
-/log/migrations
