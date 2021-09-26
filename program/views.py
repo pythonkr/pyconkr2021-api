@@ -24,7 +24,7 @@ class SessionListApi(generics.ListAPIView):
                 Q(video_open_at__day=self.request.GET['day'])
             )
 
-        return queryset.order_by('video_open_at').order_by('track_num')
+        return queryset.order_by('video_open_at', 'track_num')
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
