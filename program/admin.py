@@ -18,7 +18,7 @@ admin.site.register(ProgramCategory, ProgramCategoryAdmin)
 
 
 class ProgramAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'difficulty', 'duration', 'language', 'category', 'video_open_at', 'track_num',)
+    list_display = ('title', 'user_name', 'difficulty', 'duration', 'language', 'category', 'video_open_at', 'track_num',)
     ordering = ('video_open_at', 'track_num',)
     search_fields = ('title',)
 
