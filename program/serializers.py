@@ -20,5 +20,5 @@ class ProposalSerializer(serializers.ModelSerializer):
         model = Proposal
         fields = ['title', 'brief', 'desc', 'comment', 'difficulty',
                   'duration', 'language', 'category', 'introduction', 'video_url',
-                  'slide_url', 'video_open_at'
+                  'slide_url', 'video_open_at', 'user_name',
                   ]
