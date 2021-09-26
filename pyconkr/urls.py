@@ -20,7 +20,7 @@ from django.http import HttpResponse
 
 from rest_framework import routers
 
-from sponsor.viewsets import SponsorViewSet, SponsorLevelViewSet, PatronViewSet
+from sponsor.viewsets import SponsorViewSet, SponsorLevelViewSet, PatronViewSet, SponsorDetailViewSet
 from program.viewsets import ProposalViewSet
 from article.viewsets import ArticleViewSet
 
@@ -32,6 +32,7 @@ router.register(r'sponsors', SponsorLevelViewSet)
 # router.register(r'program', ProposalViewSet)
 router.register(r'article', ArticleViewSet)
 router.register(r'patron', PatronViewSet)
+# router.register(r'sponsor_detail', SponsorDetailViewSet)
 
 urlpatterns = [
     path('health', lambda request: HttpResponse('good')),
