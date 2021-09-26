@@ -6,9 +6,11 @@ from sponsor import models
 
 
 class SponsorSerializer(serializers.ModelSerializer):
+    level = serializers.StringRelatedField()
+
     class Meta:
         model = models.Sponsor
-        fields = ['name', 'desc', 'logo_image', 'url', 'slug']
+        fields = ['name', 'desc', 'logo_image', 'url', 'slug', 'level']
 
 
 class SponsorLevelSerializer(serializers.ModelSerializer):
