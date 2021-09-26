@@ -18,7 +18,7 @@ class ProgramCategory(models.Model):
 
 class Proposal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    user_name = models.CharField(max_length=100, default="")
     title = models.CharField(max_length=255)
     brief = models.TextField(max_length=1000)
     desc = models.TextField(max_length=4000)
