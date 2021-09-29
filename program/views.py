@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.db.models import Q
 
-from rest_framework import generics
+from rest_framework import generics, mixins
 from rest_framework.response import Response
+
+import rest_framework.status as status
 
 from program.serializers import ProposalSerializer
 from program.models import Proposal
@@ -29,3 +31,15 @@ class SessionListApi(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         return Response(self.serializer_class(queryset, many=True).data)
+
+
+class SessionDetailApi(generics.RetrieveAPIView):
+    def retrieve(self, request, *args, **kwargs):
+        try:
+            queryset = Proposal.objects.get(id=kwargs['id'])
+        except Proposal.DoesNotExist:
+            return Response({'msg': 'Not Found'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ProposalSerializer(queryset, many=False)
+
+        return Response(serializer.data)
