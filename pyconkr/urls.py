@@ -24,7 +24,7 @@ from sponsor.viewsets import SponsorViewSet, SponsorLevelViewSet, PatronViewSet,
 from program.viewsets import ProposalViewSet
 from article.viewsets import ArticleViewSet
 
-from program.views import SessionListApi
+from program.views import SessionListApi, SessionDetailApi
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -42,6 +42,7 @@ urlpatterns = [
 
     # API
     path('api/v1/program/', SessionListApi.as_view()),
+    path('api/v1/program/<int:id>', SessionDetailApi.as_view()),
 
     # DRF Router
     path('api/v1/', include(router.urls)),
